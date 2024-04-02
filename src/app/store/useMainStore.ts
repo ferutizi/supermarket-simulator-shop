@@ -13,7 +13,7 @@ export const useMainStore = create<MainStoreState>((set) => ({
       quantityPerBox: 10,
       img: "lecheimg",
       supplier: "LaVacaFeliz",
-      placeAt: "refrigeración",
+      placeAt: "Heladera",
       amount: 1,
       subTotal: 1.5
     },
@@ -24,8 +24,8 @@ export const useMainStore = create<MainStoreState>((set) => ({
       img: "huevosimg",
       supplier: "GranjaLosPinos",
       placeAt: "estanteria",
-      amount: 2,
-      subTotal: 6
+      amount: 1,
+      subTotal: 3
     },
     {
       name: "Harina",
@@ -63,7 +63,7 @@ export const useMainStore = create<MainStoreState>((set) => ({
       quantityPerBox: 10,
       img: "quesoimg",
       supplier: "SaboresDelCampo",
-      placeAt: "refrigeración",
+      placeAt: "Heladera",
       amount: 1,
       subTotal: 4
     },
@@ -73,9 +73,9 @@ export const useMainStore = create<MainStoreState>((set) => ({
       quantityPerBox: 15,
       img: "jamonimg",
       supplier: "CarnesFrescas",
-      placeAt: "refrigeración",
-      amount: 2,
-      subTotal: 7
+      placeAt: "Heladera",
+      amount: 1,
+      subTotal: 3.5
     },
     {
       name: "Mantequilla",
@@ -83,7 +83,7 @@ export const useMainStore = create<MainStoreState>((set) => ({
       quantityPerBox: 20,
       img: "mantequillaimg",
       supplier: "LaGranjita",
-      placeAt: "refrigeración",
+      placeAt: "Heladera",
       amount: 1,
       subTotal: 2.5
     },
@@ -94,8 +94,8 @@ export const useMainStore = create<MainStoreState>((set) => ({
       img: "pastaimg",
       supplier: "ItaliaEnTuMesa",
       placeAt: "estanteria",
-      amount: 3,
-      subTotal: 3.6
+      amount: 1,
+      subTotal: 1.2
     },
     {
       name: "Arroz",
@@ -104,8 +104,8 @@ export const useMainStore = create<MainStoreState>((set) => ({
       img: "arrozimg",
       supplier: "CamposVerdes",
       placeAt: "estanteria",
-      amount: 2,
-      subTotal: 2
+      amount: 1,
+      subTotal: 1
     }
   ]
 }))
