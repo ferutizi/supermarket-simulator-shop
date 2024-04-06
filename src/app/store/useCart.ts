@@ -8,6 +8,7 @@ interface CartState {
   removeProduct: (productToRemove: Product) => void,
   incrementAmount: (product: Product) => void,
   decrementAmount: (product: Product) => void,
+  clearCart: () => void,
 }
 
 export const useCart = create<CartState>((set) => ({
@@ -63,4 +64,5 @@ export const useCart = create<CartState>((set) => ({
     }
   },
 
+  clearCart: () => set(() => ({ products: [] }))
 }))
