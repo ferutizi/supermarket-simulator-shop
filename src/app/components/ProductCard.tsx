@@ -7,6 +7,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const agregar = useCart((state) => state.addProduct)
+  const eliminar = useCart((state) => state.removeProduct)
   const { name, amount, img, placeAt, price, quantityPerBox, subTotal, supplier } = product
 
   return (
@@ -48,6 +49,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <p>{subTotal}</p>
         </div>
         <button onClick={() => agregar(product)}>agregar</button>
+        <button onClick={() => eliminar(product)}>Eliminar</button>
       </div>
     </article>
   )

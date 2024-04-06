@@ -9,16 +9,7 @@ interface CartState {
 }
 
 export const useCart = create<CartState>((set, get) => ({
-  products: [{
-    name: "Leche",
-    price: 1.5,
-    quantityPerBox: 10,
-    img: "lecheimg",
-    supplier: "LaVacaFeliz",
-    placeAt: "Heladera",
-    amount: 1,
-    subTotal: 1.5
-  }],
+  products: [],
   totalValue: 0,
 
   addProduct: (productToAdd) => {
@@ -31,11 +22,18 @@ export const useCart = create<CartState>((set, get) => ({
         const existingProduct = updatedProducts[existingProductIndex]
         existingProduct.amount += productToAdd.amount
         existingProduct.subTotal += productToAdd.subTotal
-        return ({ products: updatedProducts, totalValue: newTotalvalue })
+        return { products: updatedProducts, totalValue: newTotalvalue }
       } else {
         return { products: [...state.products, productToAdd], totalValue: newTotalvalue }
       }
     })
   },
-  removeProduct: (productToRemove) => { }
+
+  removeProduct: (productToRemove) => {
+    set((state) => {
+      const updatedProducts = state.products.filter(p => p.name !== productToRemove.name)
+      const newTotal = state.totalValue - productToRemove.subTotal
+      return { products: updatedProducts, totalValue: newTotal }
+    })
+  }
 }))
