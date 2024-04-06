@@ -1,6 +1,6 @@
 export default function BuySection() {
   return (
-    <section>
+    <section className="grid-cols-1">
       <div>
         <div>
           <p>Pedir</p>

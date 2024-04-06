@@ -13,16 +13,18 @@ export default function ProductInCart({ product }: ProductInCartProps) {
   const { name, supplier, amount, price, subTotal } = product
 
   return (
-    <li>
-      <p>{supplier} {name}</p>
-      <div>
+    <li className="grid grid-cols-5">
+      <p className="col-span-2">{supplier} {name}</p>
+      <div className="col-span-1">
         <button onClick={() => decrementAmount(product)}>-</button>
         <p>{amount}</p>
         <button onClick={() => incrementAmount(product)}>+</button>
       </div>
-      <p>{price}</p>
-      <p>{subTotal}</p>
-      <button onClick={() => removeProduct(product)}>-</button>
+      <p className="col-span-1">{price}</p>
+      <div className="col-span-1">
+        <p>{subTotal}</p>
+        <button onClick={() => removeProduct(product)}>-</button>
+      </div>
     </li>
   )
 }

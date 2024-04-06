@@ -8,8 +8,10 @@ export default function ModalCart() {
         <h2>CARRITO</h2>
         <p>X</p>
       </header>
-      <ProductSection></ProductSection>
-      <BuySection></BuySection>
+      <div className="grid grid-cols-5">
+        <ProductSection></ProductSection>
+        <BuySection></BuySection>
+      </div>
     </section>
   )
 }
