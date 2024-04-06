@@ -6,6 +6,8 @@ interface CartState {
   totalValue: number,
   addProduct: (productToAdd: Product) => void,
   removeProduct: (productToRemove: Product) => void,
+  incrementAmount: (product: Product) => void,
+  decrementAmount: (product: Product) => void,
 }
 
 export const useCart = create<CartState>((set, get) => ({
@@ -35,5 +37,30 @@ export const useCart = create<CartState>((set, get) => ({
       const newTotal = state.totalValue - productToRemove.subTotal
       return { products: updatedProducts, totalValue: newTotal }
     })
-  }
+  },
+
+  incrementAmount: (product) => {
+    set((state) => {
+      const productIndex = state.products.findIndex(p => p.name === product.name)
+      const updatedProducts = [...state.products]
+      const productToIncrement = updatedProducts[productIndex]
+      productToIncrement.amount++
+      productToIncrement.subTotal += product.price
+      return { products: updatedProducts }
+    })
+  },
+
+  decrementAmount: (product) => {
+    if (product.amount > 1) {
+      set((state) => {
+        const productIndex = state.products.findIndex(p => p.name === product.name)
+        const updatedProducts = [...state.products]
+        const productToIncrement = updatedProducts[productIndex]
+        productToIncrement.amount--
+        productToIncrement.subTotal -= product.price
+        return { products: updatedProducts }
+      })
+    }
+  },
+
 }))
