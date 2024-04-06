@@ -5,7 +5,7 @@ export default function ProductSection() {
   const productsInCart = useCart((state) => state.products)
 
   return (
-    <section className="col-span-4">
+    <section className="col-span-4 bg-slate-50 text-stone-500">
       <ul>
         <li className="grid grid-cols-5">
           <p className="col-span-2">Nombre del producto</p>
