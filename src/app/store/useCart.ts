@@ -10,7 +10,7 @@ interface CartState {
   decrementAmount: (product: Product) => void,
 }
 
-export const useCart = create<CartState>((set, get) => ({
+export const useCart = create<CartState>((set) => ({
   products: [],
   totalValue: 0,
 
