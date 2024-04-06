@@ -13,8 +13,8 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { name, amount, img, placeAt, price, quantityPerBox, subTotal, supplier } = product
 
   return (
-    <article className="grid grid-cols-7 bg-cyan-950 p-4 gap-4 w-96">
-      <div className="col-span-5 bg-sky-950 relative">
+    <article className="grid grid-cols-7 bg-product-light p-4 gap-4 w-96 rounded-md">
+      <div className="col-span-5 bg-product-dark relative rounded-md">
         <h2>{name}</h2>
         <h3>{supplier}</h3>
         <div className="flex">
@@ -36,7 +36,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
       </div>
 
-      <div className="col-span-2 flex flex-col bg-blue-950 justify-around items-center">
+      <div className="col-span-2 flex flex-col bg-product-blue justify-around items-center rounded-md">
         <div>
           <p>Cantidad</p>
           <div className="flex justify-between w-full items-center">
