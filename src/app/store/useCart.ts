@@ -64,5 +64,6 @@ export const useCart = create<CartState>((set) => ({
     }
   },
 
-  clearCart: () => set(() => ({ products: [] }))
+  clearCart: () => set(() => ({ products: [], totalValue: 0 })),
+
 }))
