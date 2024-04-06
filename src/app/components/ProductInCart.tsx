@@ -10,11 +10,11 @@ export default function ProductInCart({ product }: ProductInCartProps) {
   const decrementAmount = useCart((state) => state.decrementAmount)
   const removeProduct = useCart((state) => state.removeProduct)
 
-  const { name, amount, price, subTotal } = product
+  const { name, supplier, amount, price, subTotal } = product
 
   return (
     <li>
-      <p>{name}</p>
+      <p>{supplier} {name}</p>
       <div>
         <button onClick={() => decrementAmount(product)}>-</button>
         <p>{amount}</p>

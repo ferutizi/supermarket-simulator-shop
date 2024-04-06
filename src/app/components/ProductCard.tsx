@@ -8,7 +8,6 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const add = useCart((state) => state.addProduct)
-  const remove = useCart((state) => state.removeProduct)
   const incrementAmount = useMainStore((state) => state.incrementAmount)
   const decrementAmount = useMainStore((state) => state.decrementAmount)
   const { name, amount, img, placeAt, price, quantityPerBox, subTotal, supplier } = product
@@ -52,7 +51,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           <p>{subTotal}</p>
         </div>
         <button onClick={() => add(product)}>agregar</button>
-        <button onClick={() => remove(product)}>Eliminar</button>
       </div>
     </article>
   )
