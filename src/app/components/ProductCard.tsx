@@ -1,4 +1,5 @@
 import { useCart } from "../store/useCart"
+import { useMainStore } from "../store/useMainStore"
 import { Product } from "../types"
 
 interface ProductCardProps {
@@ -6,8 +7,10 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const agregar = useCart((state) => state.addProduct)
-  const eliminar = useCart((state) => state.removeProduct)
+  const add = useCart((state) => state.addProduct)
+  const remove = useCart((state) => state.removeProduct)
+  const incrementAmount = useMainStore((state) => state.incrementAmount)
+  const decrementAmount = useMainStore((state) => state.decrementAmount)
   const { name, amount, img, placeAt, price, quantityPerBox, subTotal, supplier } = product
 
   return (
@@ -38,9 +41,9 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div>
           <p>Cantidad</p>
           <div className="flex justify-between w-full items-center">
-            <button className="bg-white text-blue-950 rounded-full w-4 h-4 flex justify-center items-center">-</button>
+            <button onClick={() => decrementAmount(product)} className="bg-white text-blue-950 rounded-full w-4 h-4 flex justify-center items-center">-</button>
             <p>{amount}</p>
-            <button className="bg-white text-blue-950 rounded-full w-4 h-4 flex justify-center items-center">+</button>
+            <button onClick={() => incrementAmount(product)} className="bg-white text-blue-950 rounded-full w-4 h-4 flex justify-center items-center">+</button>
           </div>
         </div>
         <hr className="w-full border-white"></hr>
@@ -48,8 +51,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           <p>Total</p>
           <p>{subTotal}</p>
         </div>
-        <button onClick={() => agregar(product)}>agregar</button>
-        <button onClick={() => eliminar(product)}>Eliminar</button>
+        <button onClick={() => add(product)}>agregar</button>
+        <button onClick={() => remove(product)}>Eliminar</button>
       </div>
     </article>
   )

@@ -2,10 +2,36 @@ import { create } from 'zustand'
 import { Product } from '../types'
 
 interface MainStoreState {
-  products: Product[]
+  incrementAmount: (product: Product) => void,
+  decrementAmount: (product: Product) => void,
+  products: Product[],
 }
 
 export const useMainStore = create<MainStoreState>((set) => ({
+  incrementAmount: (product) => {
+    set((state) => {
+      const productIndex = state.products.findIndex(p => p.name === product.name)
+      const updatedProducts = [...state.products]
+      const productToIncrement = updatedProducts[productIndex]
+      productToIncrement.amount++
+      productToIncrement.subTotal += product.price
+      return { products: updatedProducts }
+    })
+  },
+
+  decrementAmount: (product) => {
+    if (product.amount > 1) {
+      set((state) => {
+        const productIndex = state.products.findIndex(p => p.name === product.name)
+        const updatedProducts = [...state.products]
+        const productToIncrement = updatedProducts[productIndex]
+        productToIncrement.amount--
+        productToIncrement.subTotal -= product.price
+        return { products: updatedProducts }
+      })
+    }
+  },
+
   products: [
     {
       name: "Leche",
