@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from "react";
 import ProductCard from "./components/ProductCard";
 import { useMainStore } from "./store/useMainStore";
 import ModalCart from "./components/ModalCart";

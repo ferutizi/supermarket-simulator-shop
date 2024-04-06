@@ -5,31 +5,31 @@ export default function BuySection() {
   const clearCart = useCart((state) => state.clearCart)
   let saldo = 15000
   return (
-    <section className="grid-cols-1 bg-sky-500 flex flex-col justify-between">
+    <section className="col-span-3 bg-sky-500 flex flex-col justify-between px-4 py-2 font-bold text-sm">
       <div>
         <div className="flex justify-between">
           <p>Pedir</p>
-          <p>{totalCart}</p>
+          <p>$${totalCart}</p>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between mb-2">
           <p>Envio</p>
           <p>$8.00</p>
         </div>
-        <div className="flex justify-between">
-          <p>Total</p>
-          <p>{totalCart + 8}</p>
+        <div className="flex justify-between border-t pt-2">
+          <p className="text-lg">Total</p>
+          <p className="text-lg">${totalCart + 8}</p>
         </div>
       </div>
-      <div>
+      <div className="flex flex-col gap-2 border-t pt-2">
         <div className="flex justify-between">
           <p>saldo</p>
-          <p>{saldo}</p>
+          <p>${saldo}</p>
         </div>
         <div className="flex justify-between">
           <p>saldo restante</p>
-          <p>{saldo - totalCart}</p>
+          <p>${saldo - totalCart}</p>
         </div>
-        <button onClick={() => clearCart()}>Comprar</button>
+        <button className="bg-slate-50 text-sm text-stone-600 font-bold px-3 py-2 rounded-lg w-fit flex self-center mb-4" onClick={() => clearCart()}>Comprar</button>
       </div>
     </section>
   )

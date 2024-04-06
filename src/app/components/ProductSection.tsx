@@ -5,13 +5,13 @@ export default function ProductSection() {
   const productsInCart = useCart((state) => state.products)
 
   return (
-    <section className="col-span-4 bg-slate-50 text-stone-500">
-      <ul>
+    <section className="col-span-8 bg-slate-50 text-stone-500 px-8 py-4">
+      <ul className="flex flex-col gap-3">
         <li className="grid grid-cols-5">
-          <p className="col-span-2">Nombre del producto</p>
-          <p className="col-span-1">Unidad</p>
-          <p className="col-span-1">Precio</p>
-          <p className="col-span-1">Total</p>
+          <p className="col-span-2 font-bold text-center">Nombre del producto</p>
+          <p className="col-span-1 font-bold text-center">Unidad</p>
+          <p className="col-span-1 font-bold text-center">Precio</p>
+          <p className="col-span-1 font-bold text-center">Total</p>
         </li>
         {productsInCart.map(product =>
           <ProductInCart key={product.name} product={product} />
