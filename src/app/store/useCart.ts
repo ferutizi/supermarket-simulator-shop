@@ -18,7 +18,7 @@ export const useCart = create<CartState>((set) => ({
   addProduct: (productToAdd) => {
     set((state) => {
       const existingProductIndex = state.products.findIndex(p => p.name === productToAdd.name)
-      const newTotalvalue = state.totalValue + productToAdd.subTotal
+      const newTotalvalue = parseFloat((state.totalValue + productToAdd.subTotal).toFixed(2))
 
       if (existingProductIndex !== -1) {
         const updatedProducts = [...state.products]
@@ -35,7 +35,7 @@ export const useCart = create<CartState>((set) => ({
   removeProduct: (productToRemove) => {
     set((state) => {
       const updatedProducts = state.products.filter(p => p.name !== productToRemove.name)
-      const newTotal = state.totalValue - productToRemove.subTotal
+      const newTotal = parseFloat((state.totalValue - productToRemove.subTotal).toFixed(2))
       return { products: updatedProducts, totalValue: newTotal }
     })
   },
@@ -46,7 +46,7 @@ export const useCart = create<CartState>((set) => ({
       const updatedProducts = [...state.products]
       const productToIncrement = updatedProducts[productIndex]
       productToIncrement.amount++
-      productToIncrement.subTotal += product.price
+      productToIncrement.subTotal = parseFloat((productToIncrement.subTotal + product.price).toFixed(2))
       return { products: updatedProducts }
     })
   },
@@ -56,9 +56,9 @@ export const useCart = create<CartState>((set) => ({
       set((state) => {
         const productIndex = state.products.findIndex(p => p.name === product.name)
         const updatedProducts = [...state.products]
-        const productToIncrement = updatedProducts[productIndex]
-        productToIncrement.amount--
-        productToIncrement.subTotal -= product.price
+        const productToDecrement = updatedProducts[productIndex]
+        productToDecrement.amount--
+        productToDecrement.subTotal = parseFloat((productToDecrement.subTotal - product.price).toFixed(2))
         return { products: updatedProducts }
       })
     }

@@ -14,7 +14,7 @@ export const useMainStore = create<MainStoreState>((set) => ({
       const updatedProducts = [...state.products]
       const productToIncrement = updatedProducts[productIndex]
       productToIncrement.amount++
-      productToIncrement.subTotal += product.price
+      productToIncrement.subTotal = parseFloat((productToIncrement.subTotal + product.price).toFixed(2))
       return { products: updatedProducts }
     })
   },
@@ -24,9 +24,9 @@ export const useMainStore = create<MainStoreState>((set) => ({
       set((state) => {
         const productIndex = state.products.findIndex(p => p.name === product.name)
         const updatedProducts = [...state.products]
-        const productToIncrement = updatedProducts[productIndex]
-        productToIncrement.amount--
-        productToIncrement.subTotal -= product.price
+        const productToDecrement = updatedProducts[productIndex]
+        productToDecrement.amount--
+        productToDecrement.subTotal = parseFloat((productToDecrement.subTotal - product.price).toFixed(2))
         return { products: updatedProducts }
       })
     }
