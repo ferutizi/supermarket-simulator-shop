@@ -1,7 +1,6 @@
-import { useModalCart } from "../store/useModalCart"
+import Cart from "./Cart"
 
 export default function Header() {
-  const openModalCart = useModalCart((state) => state.openModal)
   return (
     <header className="fixed z-20 w-full">
       <section className="flex justify-between p-2 pl-0 bg-blue-400">
@@ -16,10 +15,7 @@ export default function Header() {
           <button className="bg-blue-800 p-2">Productos</button>
           <button className="bg-blue-800 p-2">Muebles</button>
         </div>
-        <div>
-          <p></p>
-          <button onClick={() => openModalCart()}>C</button>
-        </div>
+        <Cart />
       </section>
       <section className="flex pl-16 bg-cyan-200 gap-32">
         <div>
