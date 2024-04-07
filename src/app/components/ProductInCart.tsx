@@ -13,7 +13,7 @@ export default function ProductInCart({ product }: ProductInCartProps) {
   const { name, supplier, amount, price, subTotal } = product
 
   return (
-    <li className="grid grid-cols-5 bg-slate-200 pl-4 font-extrabold items-center">
+    <li className="grid grid-cols-5 w-full bg-slate-200 pl-4 font-extrabold items-center">
       <p className="col-span-2">{supplier} {name}</p>
       <div className="col-span-1 flex justify-center w-full items-center gap-2">
         <button className="bg-blue-300 rounded-full w-6 h-6 flex justify-center items-center text-white" onClick={() => decrementAmount(product)}>-</button>
