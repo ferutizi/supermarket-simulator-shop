@@ -13,20 +13,20 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { name, amount, img, placeAt, price, quantityPerBox, subTotal, supplier } = product
 
   return (
-    <article className="grid grid-cols-7 bg-product-light p-4 gap-4 w-96 rounded-md">
-      <div className="col-span-5 bg-product-dark relative rounded-md">
-        <h2>{name}</h2>
-        <h3>{supplier}</h3>
+    <article className="grid grid-cols-7 bg-product-light p-4 gap-4 w-[27rem] h-fit rounded-md font-extrabold">
+      <div className="col-span-5 bg-product-dark relative rounded-md pl-4">
+        <h2 className="text-2xl">{name}</h2>
+        <h3 className="text-slate-400 text-sm -translate-y-2">{supplier}</h3>
         <div className="flex">
           <img /* product */ />
           <div className="flex flex-col gap-4">
             <div>
               <p>Lugar</p>
-              <p>{placeAt}</p>
+              <p className="text-slate-400 text-sm">{placeAt}</p>
             </div>
             <div>
-              <p>precio por unidad</p>
-              <p>{price}</p>
+              <p className="text-sm">precio por unidad</p>
+              <p className="text-slate-400 text-sm">${price}</p>
             </div>
           </div>
         </div>
@@ -47,10 +47,10 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
         <hr className="w-full border-white"></hr>
         <div className="text-center">
-          <p>Total</p>
-          <p>{subTotal}</p>
+          <p className="text-sm">Total</p>
+          <p className="text-sm">${subTotal}</p>
         </div>
-        <button onClick={() => add(product)}>agregar</button>
+        <button className="bg-green-600 px-1 py-2 rounded-2xl text-xs" onClick={() => add(product)}>Añadir al carrito</button>
       </div>
     </article>
   )

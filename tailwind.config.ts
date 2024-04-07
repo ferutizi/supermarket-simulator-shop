@@ -17,6 +17,9 @@ const config: Config = {
         "product-dark": "#0f3349",
         "product-light": "#0c5068",
         "product-blue": "#172554",
+      },
+      fontWeight: {
+        "extrabold": '900',
       }
     },
   },

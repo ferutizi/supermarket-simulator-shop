@@ -5,7 +5,7 @@ export default function BuySection() {
   const clearCart = useCart((state) => state.clearCart)
   let saldo = 15000
   return (
-    <section className="col-span-3 bg-sky-500 flex flex-col justify-between px-4 py-2 font-bold text-sm">
+    <section className="col-span-3 bg-sky-500 flex flex-col justify-between px-4 py-2 font-extrabold text-sm">
       <div>
         <div className="flex justify-between">
           <p>Pedir</p>
@@ -29,7 +29,7 @@ export default function BuySection() {
           <p>saldo restante</p>
           <p>${saldo - totalCart}</p>
         </div>
-        <button className="bg-slate-50 text-sm text-stone-600 font-bold px-3 py-2 rounded-lg w-fit flex self-center mb-4" onClick={() => clearCart()}>Comprar</button>
+        <button className="bg-slate-50 text-sm text-stone-600 px-3 py-2 rounded-lg w-fit flex self-center mb-4" onClick={() => clearCart()}>Comprar</button>
       </div>
     </section>
   )
