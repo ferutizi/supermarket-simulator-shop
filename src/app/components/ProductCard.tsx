@@ -26,7 +26,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
             <div>
               <p className="text-sm">precio por unidad</p>
-              <p className="text-slate-400 text-sm">${price}</p>
+              <p className="text-slate-400 text-sm">${price.toFixed(2)}</p>
             </div>
           </div>
         </div>
@@ -48,7 +48,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         <hr className="w-full border-white"></hr>
         <div className="text-center">
           <p className="text-sm">Total</p>
-          <p className="text-sm">${subTotal}</p>
+          <p className="text-sm">${subTotal.toFixed(2)}</p>
         </div>
         <button className="bg-green-600 px-1 py-2 rounded-2xl text-xs" onClick={() => add(product)}>Añadir al carrito</button>
       </div>

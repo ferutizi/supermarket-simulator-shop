@@ -9,7 +9,7 @@ export default function BuySection() {
       <div>
         <div className="flex justify-between">
           <p>Pedir</p>
-          <p>${totalCart}</p>
+          <p>${totalCart.toFixed(2)}</p>
         </div>
         <div className="flex justify-between mb-2">
           <p>Envio</p>
@@ -17,7 +17,7 @@ export default function BuySection() {
         </div>
         <div className="flex justify-between border-t pt-2">
           <p className="text-lg">Total</p>
-          <p className="text-lg">${totalCart + 8}</p>
+          <p className="text-lg">${(totalCart + 8).toFixed(2)}</p>
         </div>
       </div>
       <div className="flex flex-col gap-2 border-t pt-2">

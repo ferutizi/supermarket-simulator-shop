@@ -8,7 +8,7 @@ export default function Cart() {
 
   return (
     <article className="flex items-center font-extrabold">
-      <span className="bg-slate-100 flex justify-end items-center min-w-16 h-8 pl-2 pr-1 text-stone-600 rounded-l-md">${totalCart}0</span>
+      <span className="bg-slate-100 flex justify-end items-center min-w-16 h-8 pl-2 pr-1 text-stone-600 rounded-l-md">${totalCart.toFixed(2)}</span>
       <div className="relative">
         <button className="w-12 h-12 rounded-sm bg-green-500" onClick={() => openModalCart()}>C</button>
         <span className="bg-yellow-400 absolute -bottom-3 -left-3 px-[8px] rounded-full text-stone-600">{itemsInCart}</span>
