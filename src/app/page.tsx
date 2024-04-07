@@ -3,12 +3,12 @@
 import ProductCard from "./components/ProductCard";
 import { useMainStore } from "./store/useMainStore";
 import ModalCart from "./components/ModalCart";
-import { useModalCart } from "./store/useModalCart";
 import Header from "./components/Header";
+import { useCart } from "./store/useCart";
 
 export default function Home() {
   const products = useMainStore((state) => state.products)
-  const openModal = useModalCart((state) => state.openModal)
+  const cantidad = useCart((state) => state.totalItems)
 
   return (
     <main className="h-screen flex min-h-screen flex-col items-center justify-between bg-cyan-50">
@@ -19,6 +19,7 @@ export default function Home() {
           <ProductCard key={product.name} product={product} />
         )}
       </section>
+      <h1 className="text-black">{cantidad}</h1>
     </main>
   );
 }

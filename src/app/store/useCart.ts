@@ -4,6 +4,7 @@ import { Product } from '../types'
 interface CartState {
   products: Product[],
   totalValue: number,
+  totalItems: number,
   addProduct: (productToAdd: Product) => void,
   removeProduct: (productToRemove: Product) => void,
   incrementAmount: (product: Product) => void,
@@ -14,11 +15,13 @@ interface CartState {
 export const useCart = create<CartState>((set) => ({
   products: [],
   totalValue: 0,
+  totalItems: 0,
 
   addProduct: (productToAdd) => {
     set((state) => {
       const existingProductIndex = state.products.findIndex(p => p.name === productToAdd.name)
       const newTotalvalue = parseFloat((state.totalValue + productToAdd.subTotal).toFixed(2))
+      state.totalItems += productToAdd.amount
 
       if (existingProductIndex !== -1) {
         const updatedProducts = [...state.products]
@@ -36,6 +39,7 @@ export const useCart = create<CartState>((set) => ({
     set((state) => {
       const updatedProducts = state.products.filter(p => p.name !== productToRemove.name)
       const newTotal = parseFloat((state.totalValue - productToRemove.subTotal).toFixed(2))
+      state.totalItems -= productToRemove.amount
       return { products: updatedProducts, totalValue: newTotal }
     })
   },
@@ -47,6 +51,7 @@ export const useCart = create<CartState>((set) => ({
       const productToIncrement = updatedProducts[productIndex]
       productToIncrement.amount++
       productToIncrement.subTotal = parseFloat((productToIncrement.subTotal + product.price).toFixed(2))
+      state.totalItems++
       return { products: updatedProducts }
     })
   },
@@ -59,11 +64,12 @@ export const useCart = create<CartState>((set) => ({
         const productToDecrement = updatedProducts[productIndex]
         productToDecrement.amount--
         productToDecrement.subTotal = parseFloat((productToDecrement.subTotal - product.price).toFixed(2))
+        state.totalItems--
         return { products: updatedProducts }
       })
     }
   },
 
-  clearCart: () => set(() => ({ products: [], totalValue: 0 })),
+  clearCart: () => set(() => ({ products: [], totalValue: 0, totalItems: 0 })),
 
 }))

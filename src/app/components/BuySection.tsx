@@ -9,7 +9,7 @@ export default function BuySection() {
       <div>
         <div className="flex justify-between">
           <p>Pedir</p>
-          <p>$${totalCart}</p>
+          <p>${totalCart}</p>
         </div>
         <div className="flex justify-between mb-2">
           <p>Envio</p>
