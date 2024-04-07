@@ -22,7 +22,6 @@ export const useCart = create<CartState>((set) => ({
       const existingProductIndex = state.products.findIndex(p => p.name === productToAdd.name)
       const newTotalvalue = parseFloat((state.totalValue + productToAdd.subTotal).toFixed(2))
       const newTotalItems = state.totalItems + productToAdd.amount
-      productToAdd.amount = 1
 
       if (existingProductIndex !== -1) {
         const updatedProducts: Product[] = structuredClone(state.products)
@@ -30,7 +29,7 @@ export const useCart = create<CartState>((set) => ({
         console.log(productToAdd)
         existingProduct.amount += productToAdd.amount
         existingProduct.subTotal += productToAdd.subTotal
-        return { products: updatedProducts, totalValue: newTotalvalue }
+        return { products: updatedProducts, totalValue: newTotalvalue, totalItems: newTotalItems }
       } else {
         return { products: [...state.products, productToAdd], totalValue: newTotalvalue, totalItems: newTotalItems }
       }
@@ -54,6 +53,7 @@ export const useCart = create<CartState>((set) => ({
       productToIncrement.amount++
       productToIncrement.subTotal = parseFloat((productToIncrement.subTotal + product.price).toFixed(2))
       state.totalItems++
+      state.totalValue += product.price
       return { products: updatedProducts }
     })
   },
@@ -67,6 +67,7 @@ export const useCart = create<CartState>((set) => ({
         productToDecrement.amount--
         productToDecrement.subTotal = parseFloat((productToDecrement.subTotal - product.price).toFixed(2))
         state.totalItems--
+        state.totalValue -= product.price
         return { products: updatedProducts }
       })
     }
