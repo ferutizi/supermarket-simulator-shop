@@ -50,7 +50,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           <p className="text-sm">Total</p>
           <p className="text-sm">${subTotal}</p>
         </div>
-        <button className="bg-green-600 px-1 py-2 rounded-2xl text-xs" onClick={() => { add(product), console.log(product) }}>Añadir al carrito</button>
+        <button className="bg-green-600 px-1 py-2 rounded-2xl text-xs" onClick={() => add(product)}>Añadir al carrito</button>
       </div>
     </article>
   )

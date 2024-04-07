@@ -26,7 +26,6 @@ export const useCart = create<CartState>((set) => ({
       if (existingProductIndex !== -1) {
         const updatedProducts: Product[] = structuredClone(state.products)
         const existingProduct = updatedProducts[existingProductIndex]
-        console.log(productToAdd)
         existingProduct.amount += productToAdd.amount
         existingProduct.subTotal += productToAdd.subTotal
         return { products: updatedProducts, totalValue: newTotalvalue, totalItems: newTotalItems }
