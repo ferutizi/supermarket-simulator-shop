@@ -21,16 +21,18 @@ export const useCart = create<CartState>((set) => ({
     set((state) => {
       const existingProductIndex = state.products.findIndex(p => p.name === productToAdd.name)
       const newTotalvalue = parseFloat((state.totalValue + productToAdd.subTotal).toFixed(2))
-      state.totalItems += productToAdd.amount
+      const newTotalItems = state.totalItems + productToAdd.amount
+      productToAdd.amount = 1
 
       if (existingProductIndex !== -1) {
-        const updatedProducts = [...state.products]
+        const updatedProducts: Product[] = structuredClone(state.products)
         const existingProduct = updatedProducts[existingProductIndex]
+        console.log(productToAdd)
         existingProduct.amount += productToAdd.amount
         existingProduct.subTotal += productToAdd.subTotal
         return { products: updatedProducts, totalValue: newTotalvalue }
       } else {
-        return { products: [...state.products, productToAdd], totalValue: newTotalvalue }
+        return { products: [...state.products, productToAdd], totalValue: newTotalvalue, totalItems: newTotalItems }
       }
     })
   },
@@ -47,7 +49,7 @@ export const useCart = create<CartState>((set) => ({
   incrementAmount: (product) => {
     set((state) => {
       const productIndex = state.products.findIndex(p => p.name === product.name)
-      const updatedProducts = [...state.products]
+      const updatedProducts: Product[] = structuredClone(state.products)
       const productToIncrement = updatedProducts[productIndex]
       productToIncrement.amount++
       productToIncrement.subTotal = parseFloat((productToIncrement.subTotal + product.price).toFixed(2))
@@ -60,7 +62,7 @@ export const useCart = create<CartState>((set) => ({
     if (product.amount > 1) {
       set((state) => {
         const productIndex = state.products.findIndex(p => p.name === product.name)
-        const updatedProducts = [...state.products]
+        const updatedProducts: Product[] = structuredClone(state.products)
         const productToDecrement = updatedProducts[productIndex]
         productToDecrement.amount--
         productToDecrement.subTotal = parseFloat((productToDecrement.subTotal - product.price).toFixed(2))
