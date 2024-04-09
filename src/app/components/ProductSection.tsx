@@ -14,7 +14,7 @@ export default function ProductSection() {
           <p className="col-span-1 text-center">Total</p>
         </li>
         {productsInCart.map(product =>
-          <ProductInCart key={product.name} product={product} />
+          <ProductInCart key={product.id} product={product} />
         )}
       </ul>
     </section>

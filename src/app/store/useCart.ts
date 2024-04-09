@@ -50,9 +50,9 @@ export const useCart = create<CartState>((set) => ({
       const updatedProducts: Product[] = structuredClone(state.products)
       const productToIncrement = updatedProducts[productIndex]
       productToIncrement.amount++
-      productToIncrement.subTotal = parseFloat((productToIncrement.subTotal + product.price).toFixed(2))
+      productToIncrement.subTotal = parseFloat((productToIncrement.subTotal + product.totalPrice).toFixed(2))
       state.totalItems++
-      state.totalValue += product.price
+      state.totalValue += product.totalPrice
       return { products: updatedProducts }
     })
   },
@@ -64,9 +64,9 @@ export const useCart = create<CartState>((set) => ({
         const updatedProducts: Product[] = structuredClone(state.products)
         const productToDecrement = updatedProducts[productIndex]
         productToDecrement.amount--
-        productToDecrement.subTotal = parseFloat((productToDecrement.subTotal - product.price).toFixed(2))
+        productToDecrement.subTotal = parseFloat((productToDecrement.subTotal - product.totalPrice).toFixed(2))
         state.totalItems--
-        state.totalValue -= product.price
+        state.totalValue -= product.totalPrice
         return { products: updatedProducts }
       })
     }

@@ -1,3 +1,5 @@
+'use client'
+
 import { useCart } from "../store/useCart"
 import { useModalCart } from "../store/useModalCart"
 

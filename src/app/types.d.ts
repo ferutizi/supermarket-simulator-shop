@@ -1,11 +1,12 @@
 export type Product = {
+  id: number,
   name: string,
-  price: number,
-  quantityPerBox: number,
-  img: string,
   supplier: string,
   placeAt: string,
-  /* estanteria, heladera, congelador */
+  totalPrice: number,
+  unityPrice: number,
+  quantityPerBox: number,
+  img: string,
   amount: number,
   subTotal: number,
 }

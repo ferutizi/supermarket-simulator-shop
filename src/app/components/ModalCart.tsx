@@ -1,3 +1,5 @@
+'use client'
+
 import ProductSection from "./ProductSection";
 import BuySection from "./BuySection";
 import { useModalCart } from "../store/useModalCart";

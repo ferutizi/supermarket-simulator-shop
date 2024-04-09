@@ -10,7 +10,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const add = useCart((state) => state.addProduct)
   const incrementAmount = useMainStore((state) => state.incrementAmount)
   const decrementAmount = useMainStore((state) => state.decrementAmount)
-  const { name, amount, img, placeAt, price, quantityPerBox, subTotal, supplier } = product
+  const { name, amount, img, placeAt, totalPrice, unityPrice, quantityPerBox, subTotal, supplier } = product
 
   return (
     <article className="grid grid-cols-7 bg-product-light p-4 gap-4 w-[27rem] h-fit rounded-md font-extrabold">
@@ -26,7 +26,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
             <div>
               <p className="text-sm">precio por unidad</p>
-              <p className="text-slate-400 text-sm">${price.toFixed(2)}</p>
+              <p className="text-slate-400 text-sm">${unityPrice.toFixed(2)}</p>
             </div>
           </div>
         </div>
