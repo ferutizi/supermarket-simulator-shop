@@ -19,7 +19,7 @@ export const useCart = create<CartState>((set) => ({
 
   addProduct: (productToAdd) => {
     set((state) => {
-      const existingProductIndex = state.products.findIndex(p => p.name === productToAdd.name)
+      const existingProductIndex = state.products.findIndex(p => p.id === productToAdd.id)
       const newTotalvalue = parseFloat((state.totalValue + productToAdd.subTotal).toFixed(2))
       const newTotalItems = state.totalItems + productToAdd.amount
 
@@ -37,7 +37,7 @@ export const useCart = create<CartState>((set) => ({
 
   removeProduct: (productToRemove) => {
     set((state) => {
-      const updatedProducts = state.products.filter(p => p.name !== productToRemove.name)
+      const updatedProducts = state.products.filter(p => p.id !== productToRemove.id)
       const newTotal = parseFloat((state.totalValue - productToRemove.subTotal).toFixed(2))
       state.totalItems -= productToRemove.amount
       return { products: updatedProducts, totalValue: newTotal }
@@ -46,7 +46,7 @@ export const useCart = create<CartState>((set) => ({
 
   incrementAmount: (product) => {
     set((state) => {
-      const productIndex = state.products.findIndex(p => p.name === product.name)
+      const productIndex = state.products.findIndex(p => p.id === product.id)
       const updatedProducts: Product[] = structuredClone(state.products)
       const productToIncrement = updatedProducts[productIndex]
       productToIncrement.amount++
@@ -60,7 +60,7 @@ export const useCart = create<CartState>((set) => ({
   decrementAmount: (product) => {
     if (product.amount > 1) {
       set((state) => {
-        const productIndex = state.products.findIndex(p => p.name === product.name)
+        const productIndex = state.products.findIndex(p => p.id === product.id)
         const updatedProducts: Product[] = structuredClone(state.products)
         const productToDecrement = updatedProducts[productIndex]
         productToDecrement.amount--

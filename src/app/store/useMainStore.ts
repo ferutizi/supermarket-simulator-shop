@@ -13,7 +13,7 @@ export const useMainStore = create<MainStoreState>((set) => ({
 
   incrementAmount: (product) => {
     set((state) => {
-      const productIndex = state.products.findIndex(p => p.name === product.name)
+      const productIndex = state.products.findIndex(p => p.id === product.id)
       const updatedProducts = [...state.products]
       const productToIncrement = updatedProducts[productIndex]
       productToIncrement.amount++
@@ -25,7 +25,7 @@ export const useMainStore = create<MainStoreState>((set) => ({
   decrementAmount: (product) => {
     if (product.amount > 1) {
       set((state) => {
-        const productIndex = state.products.findIndex(p => p.name === product.name)
+        const productIndex = state.products.findIndex(p => p.id === product.id)
         const updatedProducts = [...state.products]
         const productToDecrement = updatedProducts[productIndex]
         productToDecrement.amount--
@@ -65,7 +65,6 @@ export const useMainStore = create<MainStoreState>((set) => ({
           subTotal: Number(totalPrice)
         }
       })
-    console.log(productsToLoad)
     set(() => {
       return { products: productsToLoad }
     })

@@ -12,7 +12,6 @@ export default function Home() {
 
   useEffect(() => {
     getProducts()
-    console.log(Number("1.5"))
   }, [])
 
   return (
