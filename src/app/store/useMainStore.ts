@@ -2,13 +2,16 @@ import { create } from 'zustand'
 import { Product } from '../types'
 
 interface MainStoreState {
+  allProducts: Product[],
   products: Product[],
   incrementAmount: (product: Product) => void,
   decrementAmount: (product: Product) => void,
-  getProducts: () => Promise<void>
+  getProducts: () => Promise<void>,
+  filterProducts: (input: string) => void,
 }
 
 export const useMainStore = create<MainStoreState>((set) => ({
+  allProducts: [],
   products: [],
 
   incrementAmount: (product) => {
@@ -65,9 +68,19 @@ export const useMainStore = create<MainStoreState>((set) => ({
           subTotal: Number(totalPrice)
         }
       })
-    console.log(productsToLoad)
     set(() => {
-      return { products: productsToLoad }
+      return { allProducts: productsToLoad, products: productsToLoad }
+    })
+  },
+
+  filterProducts: (input) => {
+    set((state) => {
+      const filteredProducts = state.allProducts.filter(p => p.name.toLowerCase().includes(input.toLowerCase()))
+      if (input.trim() === '') {
+        return { products: state.allProducts }
+      } else {
+        return { products: filteredProducts }
+      }
     })
   }
 }))
