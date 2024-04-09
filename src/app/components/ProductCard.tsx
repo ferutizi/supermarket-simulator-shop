@@ -31,7 +31,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
         </div>
         <div className="absolute bottom-0 right-0">
-          <div className="flex items-center">
+          <div className="flex items-center mb-1">
             <p className="text-2xl">{quantityPerBox}</p>
             <img src="/box.png" alt="empty box" title="empty box" className="w-10" />
           </div>
