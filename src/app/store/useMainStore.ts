@@ -65,6 +65,7 @@ export const useMainStore = create<MainStoreState>((set) => ({
           subTotal: Number(totalPrice)
         }
       })
+    console.log(productsToLoad)
     set(() => {
       return { products: productsToLoad }
     })

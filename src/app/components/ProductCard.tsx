@@ -17,8 +17,8 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="col-span-5 bg-product-dark relative rounded-md pl-4">
         <h2 className="text-2xl">{name}</h2>
         <h3 className="text-slate-400 text-sm -translate-y-2">{supplier}</h3>
-        <div className="flex">
-          <img /* product */ />
+        <div className="flex items-center">
+          <img src={"/" + product.img + ".png"} className="h-20" />
           <div className="flex flex-col gap-4">
             <div>
               <p>Lugar</p>
@@ -31,8 +31,10 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
         </div>
         <div className="absolute bottom-0 right-0">
-          <p>{quantityPerBox}</p>
-          <img /* box */ />
+          <div className="flex items-center">
+            <p className="text-2xl">{quantityPerBox}</p>
+            <img src="/box.png" alt="empty box" title="empty box" className="w-10" />
+          </div>
         </div>
       </div>
 
