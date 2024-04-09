@@ -2,19 +2,22 @@ import { create } from 'zustand'
 import { Product } from '../types'
 
 interface MainStoreState {
+  products: Product[],
   incrementAmount: (product: Product) => void,
   decrementAmount: (product: Product) => void,
-  products: Product[],
+  getProducts: () => Promise<void>
 }
 
 export const useMainStore = create<MainStoreState>((set) => ({
+  products: [],
+
   incrementAmount: (product) => {
     set((state) => {
       const productIndex = state.products.findIndex(p => p.name === product.name)
       const updatedProducts = [...state.products]
       const productToIncrement = updatedProducts[productIndex]
       productToIncrement.amount++
-      productToIncrement.subTotal = parseFloat((productToIncrement.subTotal + product.price).toFixed(2))
+      productToIncrement.subTotal = parseFloat((productToIncrement.subTotal + product.totalPrice).toFixed(2))
       return { products: updatedProducts }
     })
   },
@@ -26,112 +29,45 @@ export const useMainStore = create<MainStoreState>((set) => ({
         const updatedProducts = [...state.products]
         const productToDecrement = updatedProducts[productIndex]
         productToDecrement.amount--
-        productToDecrement.subTotal = parseFloat((productToDecrement.subTotal - product.price).toFixed(2))
+        productToDecrement.subTotal = parseFloat((productToDecrement.subTotal - product.totalPrice).toFixed(2))
         return { products: updatedProducts }
       })
     }
   },
 
-  products: [
-    {
-      name: "Leche",
-      price: 1.5,
-      quantityPerBox: 10,
-      img: "lecheimg",
-      supplier: "LaVacaFeliz",
-      placeAt: "Heladera",
-      amount: 1,
-      subTotal: 1.5
-    },
-    {
-      name: "Huevos",
-      price: 3,
-      quantityPerBox: 30,
-      img: "huevosimg",
-      supplier: "GranjaLosPinos",
-      placeAt: "estanteria",
-      amount: 1,
-      subTotal: 3
-    },
-    {
-      name: "Harina",
-      price: 2,
-      quantityPerBox: 20,
-      img: "harinaimg",
-      supplier: "MolinosEstrella",
-      placeAt: "estanteria",
-      amount: 1,
-      subTotal: 2
-    },
-    {
-      name: "Azúcar",
-      price: 1.8,
-      quantityPerBox: 15,
-      img: "azucarimg",
-      supplier: "DulzuraPura",
-      placeAt: "estanteria",
-      amount: 1,
-      subTotal: 1.8
-    },
-    {
-      name: "Café",
-      price: 5.5,
-      quantityPerBox: 20,
-      img: "cafeimg",
-      supplier: "AromaDeMontaña",
-      placeAt: "estanteria",
-      amount: 1,
-      subTotal: 5.5
-    },
-    {
-      name: "Queso",
-      price: 4,
-      quantityPerBox: 10,
-      img: "quesoimg",
-      supplier: "SaboresDelCampo",
-      placeAt: "Heladera",
-      amount: 1,
-      subTotal: 4
-    },
-    {
-      name: "Jamón",
-      price: 3.5,
-      quantityPerBox: 15,
-      img: "jamonimg",
-      supplier: "CarnesFrescas",
-      placeAt: "Heladera",
-      amount: 1,
-      subTotal: 3.5
-    },
-    {
-      name: "Mantequilla",
-      price: 2.5,
-      quantityPerBox: 20,
-      img: "mantequillaimg",
-      supplier: "LaGranjita",
-      placeAt: "Heladera",
-      amount: 1,
-      subTotal: 2.5
-    },
-    {
-      name: "Pasta",
-      price: 1.2,
-      quantityPerBox: 24,
-      img: "pastaimg",
-      supplier: "ItaliaEnTuMesa",
-      placeAt: "estanteria",
-      amount: 1,
-      subTotal: 1.2
-    },
-    {
-      name: "Arroz",
-      price: 1,
-      quantityPerBox: 30,
-      img: "arrozimg",
-      supplier: "CamposVerdes",
-      placeAt: "estanteria",
-      amount: 1,
-      subTotal: 1
-    }
-  ]
+  getProducts: async () => {
+    const csv = await fetch('https://docs.google.com/spreadsheets/d/e/2PACX-1vRTJtFedbNr45iLpCopyhZ2b6B8D82dK2zOJy4D7C1OxUubO66aQRU5jH2ZwnZumGg50IWHfcEMEZeh/pub?gid=0&single=true&output=csv')
+      .then((res) => res.text())
+    const productsToLoad = csv
+      .split("\n")
+      .slice(1)
+      .map((row) => {
+        const [
+          id,
+          name,
+          supplier,
+          placeAt,
+          totalPrice,
+          unityPrice,
+          quantityPerBox,
+          img] = row.split(",")
+
+        return {
+          id: Number(id),
+          name,
+          supplier,
+          placeAt,
+          totalPrice: Number(totalPrice),
+          unityPrice: Number(unityPrice),
+          quantityPerBox: Number(quantityPerBox),
+          img,
+          amount: 1,
+          subTotal: Number(totalPrice)
+        }
+      })
+    console.log(productsToLoad)
+    set(() => {
+      return { products: productsToLoad }
+    })
+  }
 }))
