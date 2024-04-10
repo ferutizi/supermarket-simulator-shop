@@ -4,6 +4,7 @@
         "es2021": true
     },
     "extends": [
+        "next",
         "standard-with-typescript",
         "plugin:react/recommended"
     ],
@@ -14,5 +15,10 @@
     "plugins": [
         "react"
     ],
-    "rules": {}
+    "rules": {
+        "react/no-unescaped-entities": "off",
+        "@next/next/no-page-custom-font": "off",
+        "@typescript-eslint/member-delimiter-style": "off",
+        "react/react-in-jsx-scope": "off"
+    }
 }
