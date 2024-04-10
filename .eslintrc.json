@@ -1,6 +1,7 @@
 {
     "extends": "next/core-web-vitals",
     "rules": {
-        "lint@next/next/no-img-element": false
+        "lint@next/next/no-img-element": false,
+        "react/react-in-jsx-scope": false
     }
 }
