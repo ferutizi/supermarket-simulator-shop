@@ -1,31 +1,6 @@
 {
-    "extends": "next/core-web-vitals"
-}
-/* {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [],
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
+    "extends": "next/core-web-vitals",
     "rules": {
-        "@typescript-eslint/member-delimiter-style": "off",
-        "react/react-in-jsx-scope": "off"
-    },
-    "overrides": [
-        {
-            "files": [
-                "*.js",
-                "*.jsx",
-                "*.ts",
-                "*.tsx"
-            ]
-        }
-    ]
-} */
+        "lint@next/next/no-img-element": false
+    }
+}
