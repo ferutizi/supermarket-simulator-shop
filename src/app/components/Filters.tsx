@@ -27,16 +27,23 @@ export default function Filters() {
   return (
     <section className="flex pl-16 py-2 bg-cyan-200 gap-32">
       <div>
-        <input className="border border-stone-500 rounded-lg ml-4 text-stone-800" name="filter" value={form.filter} onChange={handleChange} />
+        <input
+          className="border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2"
+          name="filter" value={form.filter} onChange={handleChange}
+        />
         <img />
       </div>
       <label className="text-cyan-700">
         MOSTRAR:
-        <input className="border border-stone-500 rounded-lg ml-4" />
+        <input
+          className="border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2"
+        />
       </label>
       <label className="text-cyan-700">
         CATEGORIA
-        <input className="border border-stone-500 rounded-lg ml-4" />
+        <input
+          className="border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2"
+        />
       </label>
     </section>
   )
