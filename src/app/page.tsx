@@ -1,10 +1,10 @@
 'use client'
 
-import ProductCard from "./components/ProductCard";
-import { useMainStore } from "./store/useMainStore";
-import ModalCart from "./components/ModalCart";
-import Header from "./components/Header";
-import { useEffect } from "react";
+import ProductCard from './components/ProductCard'
+import { useMainStore } from './store/useMainStore'
+import ModalCart from './components/ModalCart'
+import Header from './components/Header'
+import { useEffect } from 'react'
 
 export default function Home() {
   const products = useMainStore((state) => state.products)
@@ -15,14 +15,14 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="h-screen flex min-h-screen flex-col items-center justify-between bg-cyan-100">
+    <main className='h-screen flex min-h-screen flex-col items-center justify-between bg-cyan-100'>
       <Header />
       <ModalCart />
-      <section className="grid grid-cols-3 gap-8 mt-48 overflow-y-scroll scroll pb-28">
+      <section className='grid grid-cols-3 gap-8 mt-48 overflow-y-scroll scroll pb-28'>
         {products.map(product =>
           <ProductCard key={product.id} product={product} />
         )}
       </section>
     </main>
-  );
+  )
 }

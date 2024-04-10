@@ -1,12 +1,17 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "node": true
     },
     "extends": [
-        "next",
-        "standard-with-typescript",
-        "plugin:react/recommended"
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "next/core-web-vitals",
+        "./node_modules/standard/eslintrc.json",
+        "standard-with-typescript"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -15,10 +20,5 @@
     "plugins": [
         "react"
     ],
-    "rules": {
-        "react/no-unescaped-entities": "off",
-        "@next/next/no-page-custom-font": "off",
-        "@typescript-eslint/member-delimiter-style": "off",
-        "react/react-in-jsx-scope": "off"
-    }
+    "rules": {}
 }
