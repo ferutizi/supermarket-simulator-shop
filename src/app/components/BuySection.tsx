@@ -13,11 +13,13 @@ export default function BuySection() {
         </div>
         <div className="flex justify-between mb-2">
           <p>Envio</p>
-          <p>$8.00</p>
+          <p>{totalCart === 0 ? "$0.00" : "$8.00"}</p>
         </div>
         <div className="flex justify-between border-t pt-2">
           <p className="text-lg">Total</p>
-          <p className="text-lg">${(totalCart + 8).toFixed(2)}</p>
+          <p className="text-lg">
+            {totalCart === 0 ? "$0.00" : (totalCart + 8).toFixed(2)}
+          </p>
         </div>
       </div>
       <div className="flex flex-col gap-2 border-t pt-2">
@@ -27,7 +29,9 @@ export default function BuySection() {
         </div>
         <div className="flex justify-between">
           <p>saldo restante</p>
-          <p>${saldo - totalCart}</p>
+          <p>
+            ${totalCart === 0 ? "0.00" : (saldo - totalCart - 8).toFixed(2)}
+          </p>
         </div>
         <button className="bg-slate-50 text-sm text-stone-600 px-3 py-2 rounded-lg w-fit flex self-center mb-4" onClick={() => clearCart()}>Comprar</button>
       </div>
