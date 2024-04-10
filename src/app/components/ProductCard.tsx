@@ -14,12 +14,17 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <article className="grid grid-cols-7 bg-product-light p-4 gap-4 w-[27rem] h-fit rounded-md font-extrabold">
-      <div className="col-span-5 bg-product-dark relative rounded-md pl-4">
-        <h2 className="text-2xl">{name}</h2>
-        <h3 className="text-slate-400 text-sm -translate-y-2">{supplier}</h3>
+      <div className="col-span-5 bg-product-dark relative rounded-md">
+        <h2 className="text-2xl whitespace-nowrap overflow-hidden text-ellipsis w-64 pl-4" title={product.name}>{name}</h2>
+        <h3 className="text-slate-400 text-sm -translate-y-2 pl-4" title={product.supplier}>{supplier}</h3>
         <div className="flex items-center">
-          <img src={"/" + product.img + ".png"} className="h-20" />
-          <div className="flex flex-col gap-4">
+          <img
+            src={"/" + product.img + ".png"}
+            alt={`${product.name} ${product.supplier}`}
+            title={`${product.name} ${product.supplier}`}
+            className="h-20 pl-1"
+          />
+          <div className="flex flex-col gap-2 mb-2">
             <div>
               <p>Lugar</p>
               <p className="text-slate-400 text-sm">{placeAt}</p>
@@ -32,8 +37,8 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
         <div className="absolute bottom-0 right-0">
           <div className="flex items-center mb-1">
-            <p className="text-2xl">{quantityPerBox}</p>
-            <img src="/box.png" alt="empty box" title="empty box" className="w-10" />
+            <p className="text-xl" title={quantityPerBox + " productos por caja"}>{quantityPerBox}</p>
+            <img src="/box.png" alt="empty box" title="empty box" className="w-9" />
           </div>
         </div>
       </div>
