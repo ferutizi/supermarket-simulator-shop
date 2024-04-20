@@ -28,7 +28,7 @@ export default function Filters() {
     <section className="flex justify-between pr-4 lg:pl-4 lg:gap-8 xl:pl-16 py-2 bg-cyan-200 xl:gap-32">
       <div className="relative">
         <input
-          className="border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2"
+          className="border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2 pr-7 w-40 lg:w-max"
           name="filter"
           value={form.filter}
           onChange={handleChange}
@@ -37,16 +37,16 @@ export default function Filters() {
         <img src="/search.png" alt="buscar con la lupa" title="buscar con la lupa" className="absolute w-[1.3rem] right-1 top-[3px]" />
       </div>
       <label className="text-cyan-700">
-        MOSTRAR:
+        <span className="hidden lg:inline">MOSTRAR:</span>
         <input
-          className="border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2"
+          className="border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2 w-32 lg:w-max"
           placeholder="Todo"
         />
       </label>
       <label className="text-cyan-700">
-        CATEGORIA
+        <span className="hidden lg:inline">CATEGORIA</span>
         <input
-          className="border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2"
+          className="border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2 w-32 lg:w-max"
           placeholder="Todo"
         />
       </label>
