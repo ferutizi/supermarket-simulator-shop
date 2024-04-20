@@ -13,8 +13,8 @@ export default function ProductInCart({ product }: ProductInCartProps) {
   const { name, supplier, amount, totalPrice, subTotal } = product
 
   return (
-    <li className="grid grid-cols-5 w-full bg-slate-200 pl-4 font-extrabold items-center">
-      <p className="col-span-2 whitespace-nowrap overflow-hidden text-ellipsis w-60">{supplier} {name}</p>
+    <li className="flex flex-wrap justify-between sm:grid sm:grid-cols-5 w-full bg-slate-200 pl-4 font-extrabold items-center">
+      <p className="col-span-2 whitespace-nowrap overflow-hidden text-ellipsis w-full">{supplier} {name}</p>
       <div className="col-span-1 flex justify-center w-full items-center gap-2">
         <button className="bg-blue-300 rounded-full w-6 h-6 flex justify-center items-center text-white" onClick={() => decrementAmount(product)}>-</button>
         <p className="bg-gray-300 w-8 text-center">{amount}</p>

@@ -13,7 +13,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const { name, amount, img, placeAt, totalPrice, unityPrice, quantityPerBox, subTotal, supplier } = product
 
   return (
-    <article className="grid grid-cols-7 bg-product-light p-4 gap-4 w-[27rem] h-fit rounded-md font-extrabold">
+    <article className="flex flex-col w-[90vw] my-0 mx-auto xs:grid xs:grid-cols-7 bg-product-light p-4 gap-4 xs:w-[27rem] h-fit rounded-md font-extrabold">
       <div className="col-span-5 bg-product-dark relative rounded-md">
         <h2 className="text-2xl whitespace-nowrap overflow-hidden text-ellipsis w-64 pl-4" title={product.name}>{name}</h2>
         <h3 className="text-slate-400 text-sm -translate-y-2 pl-4" title={product.supplier}>{supplier}</h3>
