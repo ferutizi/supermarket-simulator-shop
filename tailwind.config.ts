@@ -23,7 +23,8 @@ const config: Config = {
       },
       screens: {
         "xl": "1396px",
-        "lg": "940px"
+        "lg": "964px",
+        "xs": "450px"
       }
     },
   },
