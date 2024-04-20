@@ -19,7 +19,11 @@ const config: Config = {
         "product-blue": "#172554",
       },
       fontWeight: {
-        "extrabold": '900',
+        "extrabold": "900",
+      },
+      screens: {
+        "xl": "1396px",
+        "lg": "940px"
       }
     },
   },

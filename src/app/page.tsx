@@ -18,7 +18,7 @@ export default function Home() {
     <main className='h-screen flex min-h-screen flex-col items-center justify-between bg-cyan-100'>
       <Header />
       <ModalCart />
-      <section className='grid grid-cols-3 gap-8 mt-48 overflow-y-scroll scroll pb-28'>
+      <section className='grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1 gap-8 mt-48 overflow-y-scroll scroll pb-28'>
         {products.map(product =>
           <ProductCard key={product.id} product={product} />
         )}

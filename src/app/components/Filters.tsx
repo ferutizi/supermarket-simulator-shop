@@ -25,7 +25,7 @@ export default function Filters() {
   }, [form.filter])
 
   return (
-    <section className="flex pl-16 py-2 bg-cyan-200 gap-32">
+    <section className="flex justify-between pr-4 lg:pl-4 lg:gap-8 xl:pl-16 py-2 bg-cyan-200 xl:gap-32">
       <div className="relative">
         <input
           className="border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2"
