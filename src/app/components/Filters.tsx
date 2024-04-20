@@ -25,10 +25,10 @@ export default function Filters() {
   }, [form.filter])
 
   return (
-    <section className="flex justify-between pr-4 lg:pl-4 lg:gap-8 xl:pl-16 py-2 bg-cyan-200 xl:gap-32">
+    <section className="flex justify-center xs:justify-between xl:justify-start pr-4 lg:pl-4 lg:gap-8 xl:pl-16 py-2 bg-cyan-200 xl:gap-32">
       <div className="relative">
         <input
-          className="border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2 pr-7 w-40 lg:w-max"
+          className="w-full border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2 pr-7 xs:w-36 lg:w-max"
           name="filter"
           value={form.filter}
           onChange={handleChange}
@@ -39,14 +39,14 @@ export default function Filters() {
       <label className="text-cyan-700">
         <span className="hidden lg:inline">MOSTRAR:</span>
         <input
-          className="border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2 w-32 lg:w-max"
+          className="hidden xs:inline border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2 w-32 sm:w-max"
           placeholder="Todo"
         />
       </label>
       <label className="text-cyan-700">
         <span className="hidden lg:inline">CATEGORIA</span>
         <input
-          className="border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2 w-32 lg:w-max"
+          className="hidden xs:inline border border-stone-500 rounded-lg ml-4 text-stone-800 outline-none pl-2 w-32 sm:w-max"
           placeholder="Todo"
         />
       </label>
